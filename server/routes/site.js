@@ -7,7 +7,7 @@ siteRouter.get('/', function *(){
     yield this.render("index")
 });
 
-siteRouter.get('/summoner/:summonerName', function *() {
+siteRouter.get('/summoner/:region/:summonerName', function *() {
     yield this.render("summoner")
 });
 

@@ -26,7 +26,7 @@ gulp.task('js', function() {
             debug: true
         };
         var opts = assign({}, watchify.args, customOpts);
-        var b = browserify(opts).transform(babelify, {presets: ['react']}).plugin(watchify);
+        var b = browserify(opts).transform(babelify, {presets: ['es2015', 'react']}).plugin(watchify);
         b.on('update', bundle);
         b.on('log', gutil.log);
         b.on('error', gutil.log);

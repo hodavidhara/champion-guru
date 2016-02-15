@@ -1,9 +1,9 @@
 "use strict";
-var React = require("react");
-var ReactDOM = require("react-dom");
-var SummonerSearchBox = require('./search/SummonerSearchBox');
+import React from "react";
+import {render} from "react-dom";
+import SummonerSearchBox from "./search/SummonerSearchBox";
 
-ReactDOM.render(
+render(
     <SummonerSearchBox />,
     document.getElementById('content')
 );

@@ -1,16 +1,16 @@
-var React = require("react");
+import React from "react";
 
-// TODO: Handle Region.
-var SummonerSearchBox = React.createClass({
-    getInitialState: function () {
+class SummonerSearchBox extends React.Component {
+    constructor(props) {
+        super(props);
         var region = sessionStorage.getItem('region') || 'na';
-        return {summonerName:'', region: region}
-    },
-    render: function () {
+        this.state = {summonerName:'', region: region}
+    }
+    render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input type="text" placeholder="Summoner's name" value={this.state.summonerName} onChange={this.handleSummonerChange}/>
-                <select value={this.state.region} onChange={this.handleRegionChange}>
+            <form onSubmit={this.handleSubmit.bind(this)}>
+                <input type="text" placeholder="Summoner's name" value={this.state.summonerName} onChange={this.handleSummonerChange.bind(this)}/>
+                <select value={this.state.region} onChange={this.handleRegionChange.bind(this)}>
                     <option value="br">BR</option>
                     <option value="eune">EUNE</option>
                     <option value="euw">EUW</option>
@@ -25,18 +25,18 @@ var SummonerSearchBox = React.createClass({
                 <input type="submit" value="Search" />
             </form>
         )
-    },
-    handleSummonerChange: function(e) {
+    }
+    handleSummonerChange(e) {
         this.setState({summonerName: e.target.value});
-    },
-    handleRegionChange: function(e) {
+    }
+    handleRegionChange(e) {
         this.setState({region: e.target.value});
-    },
-    handleSubmit: function(e) {
+    }
+    handleSubmit(e) {
         e.preventDefault();
         sessionStorage.setItem('region', this.state.region);
         location.assign('/summoner/' + this.state.region + '/' + this.state.summonerName);
     }
-});
+}
 
-module.exports = SummonerSearchBox;
+export default SummonerSearchBox;

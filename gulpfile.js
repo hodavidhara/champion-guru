@@ -21,6 +21,7 @@ gulp.task('js', function() {
     ];
 
     var tasks = files.map(function(entry) {
+        gutil.log('bundling: ', entry);
         var customOpts = {
             entries: entry,
             debug: true

@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import SummonerSearchBox from "../components/search/SummonerSearchBox";
 import SummonerChampionMasteries from "../components/mastery/SummonerChampionMasteries";
 
 class Summoner extends Component {
@@ -8,9 +7,8 @@ class Summoner extends Component {
     render() {
         return (
             <div>
-                <SummonerSearchBox/>
-                <h1>{this.props.summonerName}</h1>
-                <SummonerChampionMasteries region={this.props.region} summonerName={this.props.summonerName}/>
+                <h1>{this.props.params.summonerName}</h1>
+                <SummonerChampionMasteries region={this.props.params.region} summonerName={this.props.params.summonerName}/>
             </div>
         )
     }

@@ -1,14 +1,8 @@
-"use strict";
-var router = require('koa-router');
+var send = require('koa-send');
 
-var siteRouter = router();
-
-siteRouter.get('/', function *(){
-    yield this.render("index")
-});
-
-siteRouter.get('/summoner/:region/:summonerName', function *() {
-    yield this.render("summoner")
-});
-
+function* siteRouter(next) {
+    yield next;
+    if (this.body) return;
+    yield send(this, 'index.html')
+}
 module.exports = siteRouter;

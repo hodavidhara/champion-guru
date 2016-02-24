@@ -1,4 +1,6 @@
 import React from "react";
+import {connect} from "react-redux";
+import {push} from "react-router-redux";
 
 class SummonerSearchBox extends React.Component {
     constructor(props) {
@@ -35,8 +37,16 @@ class SummonerSearchBox extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         sessionStorage.setItem('region', this.state.region);
-        location.assign('/summoner/' + this.state.region + '/' + this.state.summonerName);
+        this.props.goToSummoner(this.state.region, this.state.summonerName);
     }
 }
 
-export default SummonerSearchBox;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        goToSummoner: (region, summonerName) => {
+            dispatch(push('/summoner/' + region + '/' + summonerName))
+        }
+    }
+};
+
+export default connect(null, mapDispatchToProps)(SummonerSearchBox);

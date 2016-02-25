@@ -7,7 +7,13 @@ class SummonerChampionMasteries extends React.Component {
         this.state = {championMasteryList: []};
     }
     componentDidMount() {
-        fetch('/api/championmastery/' + this.props.region + '/' + this.props.summonerName).then(function (response) {
+        this.fetchSummonerChampionMasteries(this.props.region, this.props.summonerName);
+    }
+    componentWillReceiveProps(nextProps) {
+        this.fetchSummonerChampionMasteries(nextProps.region, nextProps.summonerName);
+    }
+    fetchSummonerChampionMasteries(region, summonerName) {
+        fetch('/api/championmastery/' + region + '/' + summonerName).then(function (response) {
             return response.json();
         }.bind(this)).then(function (championMasteries) {
             this.setState({championMasteryList: championMasteries});
@@ -22,4 +28,4 @@ class SummonerChampionMasteries extends React.Component {
     }
 }
 
-export default SummonerChampionMasteries;
+export default SummonerChampionMasteries

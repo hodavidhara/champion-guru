@@ -1,6 +1,7 @@
 "use strict";
 var _ = require('lodash');
 var rp = require('request-promise');
+var config = require('konfig')();
 
 var REGION_MAP = {
     'br': 'BR1',
@@ -25,7 +26,7 @@ module.exports = {
 
     get: function(uri, customQs) {
         var qs = {
-            api_key: '28ea0cf2-96be-4c79-a55e-443deaad49c1'
+            api_key: config.app.riotKey
         };
 
         if (customQs) {

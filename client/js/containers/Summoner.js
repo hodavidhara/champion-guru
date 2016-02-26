@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import {connect} from "react-redux";
 import SummonerChampionMasteries from "../components/mastery/SummonerChampionMasteries";
 
 class Summoner extends Component {
@@ -14,11 +13,4 @@ class Summoner extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        summonerName: state.summonerName,
-        region: state.region
-    }
-};
-
-export default connect(mapStateToProps)(Summoner);
+export default Summoner;

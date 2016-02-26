@@ -1,21 +1,29 @@
 "use strict";
 import React from "react";
-import {render} from "react-dom";
-import {createStore, combineReducers, applyMiddleware} from "redux";
-import {Provider} from "react-redux";
-import {Router, Route, browserHistory} from "react-router";
-import {syncHistoryWithStore, routerReducer, routerMiddleware} from "react-router-redux";
+import { render } from "react-dom";
+import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+import { Provider } from "react-redux";
+import { Router, Route, browserHistory } from "react-router";
+import { syncHistoryWithStore, routerReducer as routing, routerMiddleware } from "react-router-redux";
+import thunk from "redux-thunk";
+import { championMasteries } from "./reducers";
 import App from "./containers/App";
 import Summoner from "./containers/Summoner";
 
 const reducer = combineReducers({
-    routing: routerReducer
+    championMasteries,
+    routing
 });
 
 const middleware = routerMiddleware(browserHistory);
-const store = createStore(
-    reducer,
-    applyMiddleware(middleware)
+
+const finalCreateStore = compose(
+    applyMiddleware(middleware, thunk),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+)(createStore);
+
+const store = finalCreateStore(
+    reducer
 );
 
 const history = syncHistoryWithStore(browserHistory, store);

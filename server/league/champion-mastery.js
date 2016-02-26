@@ -6,8 +6,9 @@ var ChampionMasteryService = function () {
 };
 
 ChampionMasteryService.prototype.getAllForSummoner = function (region, summonerName) {
-    return SummonerService.byName(region, summonerName).then(function(response) {
-        var summoner = response[summonerName];
+    let standardizedSummonerName = leagueUtil.standardizeSummonerName(summonerName);
+    return SummonerService.byName(region, standardizedSummonerName).then(function(response) {
+        var summoner = response[standardizedSummonerName];
         return leagueUtil.get(leagueUtil.buildApiUrl('/championmastery/location/${platformId}/player/${summonerId}/champions', {
             region: region,
             summonerId: summoner.id,

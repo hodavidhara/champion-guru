@@ -47,5 +47,9 @@ module.exports = {
 
     buildApiUrl: function(templatedUri, data) {
         return _.template(DOMAIN + templatedUri)(data);
+    },
+
+    standardizeSummonerName: function(summonerName) {
+        return summonerName.toLowerCase().replace(" ", "");
     }
 };

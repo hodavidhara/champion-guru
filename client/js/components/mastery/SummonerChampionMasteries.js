@@ -1,31 +1,44 @@
 import React from "react";
+import { connect } from "react-redux";
 import MasteryCardList from "./MasteryCardList";
+import { fetchChampionMasteriesIfNeeded } from "../../actions";
 
 class SummonerChampionMasteries extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {championMasteryList: []};
-    }
     componentDidMount() {
-        this.fetchSummonerChampionMasteries(this.props.region, this.props.summonerName);
+        this.props.update(this.props.region, this.props.summonerName);
     }
+
     componentWillReceiveProps(nextProps) {
-        this.fetchSummonerChampionMasteries(nextProps.region, nextProps.summonerName);
+        if (nextProps.region !== this.props.region || nextProps.summonerName != this.props.summonerName) {
+            this.props.update(nextProps.region, nextProps.summonerName);
+        }
     }
-    fetchSummonerChampionMasteries(region, summonerName) {
-        fetch('/api/championmastery/' + region + '/' + summonerName).then(function (response) {
-            return response.json();
-        }.bind(this)).then(function (championMasteries) {
-            this.setState({championMasteryList: championMasteries});
-        }.bind(this)).catch(function (e) {
-            console.log(e);
-        });
-    }
+
     render() {
         return (
-            <MasteryCardList championMasteryList={this.state.championMasteryList}/>
+            <MasteryCardList championMasteryList={this.props.championMasteryList}/>
         )
     }
 }
 
-export default SummonerChampionMasteries
+const mapStateToProps = (state, ownProps) => {
+    let championMasteryList = [];
+    if (state.championMasteries[ownProps.region]) {
+        if (state.championMasteries[ownProps.region][ownProps.summonerName]) {
+            championMasteryList = state.championMasteries[ownProps.region][ownProps.summonerName].masteries;
+        }
+    }
+    return {
+        championMasteryList
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        update: (region, summonerName) => {
+            dispatch(fetchChampionMasteriesIfNeeded(region, summonerName))
+        }
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SummonerChampionMasteries)

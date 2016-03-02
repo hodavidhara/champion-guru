@@ -1,5 +1,6 @@
 import React from "react";
 import ChampionData from "../data/ChampionData";
+import ChampionImage from "../image/ChampionImage";
 
 class MasteryCard extends React.Component {
     constructor(props) {
@@ -16,6 +17,7 @@ class MasteryCard extends React.Component {
     render() {
         return (
             <div className="champion-mastery">
+                <ChampionImage championName={this.state.name}/>
                 <span>champion: {this.state.name} </span>
                 <span>rank: {this.state.championLevel} </span>
                 <span>experience: {this.state.championPoints}</span>

@@ -6,7 +6,7 @@ class MasteryCardList extends React.Component{
     render() {
         var masteryCards = _.map(this.props.championMasteryList, function (championMastery) {
             return (
-                <MasteryCard championMastery={championMastery} key={championMastery.championId}/>
+                <MasteryCard {...championMastery} key={championMastery.championId}/>
             )
         });
         return (

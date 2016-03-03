@@ -1,19 +1,59 @@
 import React from "react";
+import classNames from "classnames/bind";
+import styles from "./ChampionImage.scss";
 
-const FULL_ICON_URL = "http://ddragon.leagueoflegends.com/cdn/6.4.2/img/champion/";
+const cx = classNames.bind(styles);
 
-// TODO: Support small image using sprite from http://ddragon.leagueoflegends.com/cdn/6.4.2/img/sprite/champion0.png
+const FULL_ICON_URL = 'http://ddragon.leagueoflegends.com/cdn/6.4.2/img/champion/';
+const SPRITE_ICON_URL = 'http://ddragon.leagueoflegends.com/cdn/6.4.2/img/sprite/';
+const SIZE_FULL = 'full';
+const SIZE_SPRITE = 'sprite';
+
 class ChampionImage extends React.Component {
     buildImageSource() {
-
-        // TODO: Accurately map to champion id from name using http://ddragon.leagueoflegends.com/cdn/6.4.2/data/en_US/champion.json
-        return FULL_ICON_URL + this.props.championName + ".png";
+        if (this.props.size === SIZE_SPRITE) {
+            return SPRITE_ICON_URL + this.props.imageData.sprite;
+        } else {
+            return FULL_ICON_URL + this.props.imageData.full;
+        }
     }
-    render() {
+
+    buildSpriteImage() {
+        const imageData = this.props.imageData;
+        const imageClasses = cx(this.props.size);
         return (
-            <img src={this.buildImageSource()} />
-        );
+            <div className={imageClasses} style={{
+                width: `${imageData.w}px`,
+                height: `${imageData.h}px`,
+                background: `url(${this.buildImageSource()})`,
+                backgroundPosition: `-${imageData.x}px -${imageData.y}px`
+            }}></div>
+        )
+    }
+
+    buildFullImage() {
+        const imageClasses = cx(this.props.size);
+        return (
+            <img className={imageClasses} src={this.buildImageSource()}/>
+        )
+    }
+
+    render() {
+        return this.props.size === SIZE_SPRITE ? this.buildSpriteImage() : this.buildFullImage();
     }
 }
+
+ChampionImage.defaultProps = {
+    size: SIZE_FULL, // 'full' or 'sprite'
+    imageData: {
+        full: 'Leona.png',
+        group: 'champion',
+        h: 48,
+        sprite: 'champion1.png',
+        w: 48,
+        x: 48,
+        y: 96
+    }
+};
 
 export default ChampionImage;

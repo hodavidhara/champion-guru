@@ -7,17 +7,18 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.css$/,
-                loader: 'style!css'
+                test: /\.scss$/,
+                loader: 'style!css?modules!sass'
             },
             {
                 test: /.jsx?$/,
-                loader: 'babel-loader',
+                loader: 'babel',
                 exclude: /node_modules/,
                 query: {
                     presets: ['es2015', 'react', 'stage-1']
                 }
             }
         ]
-    }
+    },
+    devtool: "#source-map"
 };

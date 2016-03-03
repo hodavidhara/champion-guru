@@ -8,7 +8,8 @@ StaticService.prototype.allChampions = function (region) {
     return leagueUtil.get(leagueUtil.buildApiUrl('/api/lol/static-data/${region}/v1.2/champion', {
         region: region
     }), {
-        dataById: true
+        dataById: true,
+        champData: 'image'
     }).then(function (response) {
         return response.data;
     });

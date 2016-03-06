@@ -4,7 +4,7 @@
   "description": "League of Legends champion mastery rankings",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development node index.js",
+    "start": "NODE_ENV=development nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +21,7 @@
     "classnames": "^2.2.3",
     "isomorphic-fetch": "^2.2.1",
     "koa": "^1.1.2",
+    "koa-rest-cache": "^1.0.0",
     "koa-router": "^5.4.0",
     "koa-send": "^3.1.0",
     "konfig": "^0.2.1",
@@ -33,8 +34,7 @@
     "react-router-redux": "^4.0.0",
     "redux": "^3.3.1",
     "redux-thunk": "^1.0.3",
-    "request-promise": "^2.0.1",
-    "whatwg-fetch": "^0.11.0"
+    "request-promise": "^2.0.1"
   },
   "devDependencies": {
     "babel-loader": "^6.2.4",

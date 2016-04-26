@@ -4,7 +4,8 @@
   "description": "League of Legends champion mastery rankings",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development nodemon index.js",
+    "build": "tsc",
+    "start": "NODE_ENV=development nodemon build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -46,6 +47,8 @@
     "node-sass": "^3.6.0",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
+    "ts-loader": "^0.8.2",
+    "typescript": "^1.8.10",
     "webpack": "^1.13.0"
   }
 }

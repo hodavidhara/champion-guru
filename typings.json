@@ -1,0 +1,25 @@
+{
+  "name": "champion-guru",
+  "version": false,
+  "dependencies": {
+    "lodash": "registry:npm/lodash#4.0.0+20160416211519",
+    "moment": "registry:npm/moment#2.10.5+20160211003958",
+    "webpack": "registry:npm/webpack#1.12.9+20160418172948"
+  },
+  "ambientDependencies": {
+    "classnames": "registry:dt/classnames#0.0.0+20160316155526",
+    "isomorphic-fetch": "registry:dt/isomorphic-fetch#0.0.0+20160316155526",
+    "koa": "registry:dt/koa#2.0.0+20160317120654",
+    "koa-router": "registry:dt/koa-router#7.0.0+20160314083221",
+    "node": "registry:dt/node#4.0.0+20160423143914",
+    "qs": "registry:dt/qs#0.0.0+20160317120654",
+    "react": "registry:dt/react#0.14.0+20160423065914",
+    "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
+    "react-redux": "registry:dt/react-redux#4.4.0+20160406115600",
+    "react-router": "registry:dt/react-router#2.0.0+20160423062133",
+    "react-router-redux": "registry:dt/react-router-redux#4.0.0+20160316155526",
+    "react-router/history": "registry:dt/react-router/history#2.0.0+20160316155526",
+    "redux": "registry:dt/redux#3.3.1+20160326112656",
+    "redux-thunk": "registry:dt/redux-thunk#2.0.1+20160317120654"
+  }
+}

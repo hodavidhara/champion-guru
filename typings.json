@@ -6,7 +6,7 @@
     "moment": "registry:npm/moment#2.10.5+20160211003958",
     "webpack": "registry:npm/webpack#1.12.9+20160418172948"
   },
-  "ambientDependencies": {
+  "globalDependencies": {
     "classnames": "registry:dt/classnames#0.0.0+20160316155526",
     "isomorphic-fetch": "registry:dt/isomorphic-fetch#0.0.0+20160316155526",
     "koa": "registry:dt/koa#2.0.0+20160317120654",

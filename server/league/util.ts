@@ -1,6 +1,6 @@
-import _ from "lodash";
-import fetch from "isomorphic-fetch";
-import qs from "qs";
+import * as _ from "lodash";
+import * as fetch from "isomorphic-fetch";
+import * as qs from "qs";
 import * as konfig from "konfig";
 const config = konfig();
 

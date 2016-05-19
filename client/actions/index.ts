@@ -1,5 +1,5 @@
 import fetch from "isomorphic-fetch";
-import moment from "moment";
+import * as moment from "moment";
 
 function requestChampionMasteries(region, summonerName) {
     return {

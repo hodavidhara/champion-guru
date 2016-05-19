@@ -1,14 +1,14 @@
-import React, { Component } from "react";
+import * as React from "react";
 import SummonerSearchBox from "../components/search/SummonerSearchBox";
 
-export default class App extends Component<any, void> {
+export default class App extends React.Component<any, void> {
 
-    render() {
-        return (
-            <div>
-                <SummonerSearchBox/>
-                {this.props.children}
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <SummonerSearchBox/>
+        {this.props.children}
+      </div>
+    )
+  }
 }

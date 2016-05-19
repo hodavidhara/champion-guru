@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import ChampionImage from "../image/ChampionImage";
 import MasteryImage from "../image/MasteryImage";
 const styles = require("./MasteryCard.scss");

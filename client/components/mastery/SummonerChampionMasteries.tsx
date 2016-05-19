@@ -1,5 +1,5 @@
-import _ from "lodash";
-import React from "react";
+import { pullAt } from "lodash";
+import * as React from "react";
 import { connect } from "react-redux";
 import MasteryPodium from "./MasteryPodium";
 import MasteryCardList from "./MasteryCardList";
@@ -43,9 +43,9 @@ const mapStateToProps = (state, ownProps) => {
     }
   }
 
-  const firstMastery = _.pullAt(championMasteryList, 0)[0];
-  const secondMastery = _.pullAt(championMasteryList, 0)[0];
-  const thirdMastery = _.pullAt(championMasteryList, 0)[0];
+  const firstMastery = pullAt(championMasteryList, 0)[0];
+  const secondMastery = pullAt(championMasteryList, 0)[0];
+  const thirdMastery = pullAt(championMasteryList, 0)[0];
   return {
     firstMastery,
     secondMastery,
